@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;400&display=swap");
+
+* {
+  font-family: Source Code Pro;
+}
+
+#questions {
+  border-width: 2px;
+  border-style: solid;
+  height: 300px;
+  width: 500px;
+  justify-content: left;
+  padding-left: 20px;
+}
+
+#timer {
+  margin-bottom: 40px;
+  padding-right: 400px;
+}
+
+#answers {
+  margin-top: 40px;
+  padding-right: 450px;
+}
+
+#ans_1:hover,
+#ans_2:hover,
+#ans_3:hover,
+#ans_4:hover {
+  color: rgb(249, 48, 115);
+  text-shadow: 20px (249, 48, 115);
+}
