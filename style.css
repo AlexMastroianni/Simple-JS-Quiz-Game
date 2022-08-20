@@ -2,6 +2,7 @@
 
 * {
   font-family: Source Code Pro;
+  list-style: none;
 }
 
 #questions {
@@ -14,6 +15,7 @@
 }
 
 #timer {
+  padding-top: 20px;
   margin-bottom: 40px;
   padding-right: 400px;
 }
@@ -21,6 +23,8 @@
 #answers {
   margin-top: 40px;
   padding-right: 450px;
+  display: grid;
+  width: 200px;
 }
 
 #ans_1:hover,
