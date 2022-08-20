@@ -7,7 +7,58 @@ var startQuizz = document.querySelector("#start");
 var highscore = document.querySelector("#highscore");
 var questionHolder = document.querySelector("questions");
 var answerHolder = document.querySelector("answers");
+var highscore = [];
 var timerCount = 10;
+
+const questionArray = [
+  {
+    question: "Commonly used data types DO NOT include:",
+
+    answerChoice: ["1. strings", "2. booleans", "3. alerts", "4. numbers"],
+    correctAnswer: 2,
+  },
+  {
+    question: "The condition in an if else statement is enclosed within ____.",
+    answerChoice: [
+      "1. quotes",
+      "2. curly brackets",
+      "3. parentheses",
+      "4. square brackets",
+    ],
+    correctAnswer: 1,
+  },
+  {
+    question: "Arrays in JavaScript can be used to store ____.",
+    answerChoice: [
+      "1. numbers and strings",
+      "2. other arrrays",
+      "3. booleans",
+      "4. all of the above",
+    ],
+    correctAnswer: 3,
+  },
+  {
+    question:
+      "Strings values must be enclosed within ____ when being assigned to variables.",
+    answerChoice: [
+      "1. commas",
+      "2. curly brackets",
+      "3. quotes",
+      "4. parentheses",
+    ],
+    correctAnswer: 2,
+  },
+  {
+    question: "A very useful tool to debug arrays is",
+    answerChoice: [
+      "1. JavaScript",
+      "2. terminal/bash",
+      "3. for loops",
+      "4. console.log",
+    ],
+    correctAnswer: 3,
+  },
+];
 
 startQuizz.addEventListener("click", countdown);
 
@@ -20,17 +71,3 @@ function countdown() {
     }
   }, 1000);
 }
-
-answer1.addEventListener("click", function () {
-  console.log("answer 1");
-});
-
-answer2.addEventListener("click", function () {
-  console.log("answer 2");
-});
-answer3.addEventListener("click", function () {
-  console.log("answer 3");
-});
-answer4.addEventListener("click", function () {
-  console.log("answer 4");
-});
