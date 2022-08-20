@@ -5,10 +5,12 @@ var answer4 = document.querySelector("#ans_4");
 var timerEl = document.querySelector("#timer");
 var startQuizz = document.querySelector("#start");
 var highscore = document.querySelector("#highscore");
-var questionHolder = document.querySelector("questions");
+var questionHolder = document.querySelector("#questions");
 var answerHolder = document.querySelector("answers");
 var highscore = [];
 var timerCount = 10;
+
+let i = 0;
 
 const questionArray = [
   {
@@ -60,6 +62,16 @@ const questionArray = [
   },
 ];
 
+function setQuizQuestions() {
+  questionHolder.textContent = questionArray[i].question;
+  answer1.textContent = questionArray[i].answerChoice[0];
+  answer2.textContent = questionArray[i].answerChoice[1];
+  answer3.textContent = questionArray[i].answerChoice[2];
+  answer4.textContent = questionArray[i].answerChoice[3];
+}
+
+setQuizQuestions();
+
 startQuizz.addEventListener("click", countdown);
 
 function countdown() {
@@ -71,3 +83,7 @@ function countdown() {
     }
   }, 1000);
 }
+
+function checkAnswer() {}
+
+answer1.addEventListener("click", function () {});
