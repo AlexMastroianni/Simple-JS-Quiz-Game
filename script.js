@@ -16,12 +16,12 @@ const questionArray = [
   {
     question: "Commonly used data types DO NOT include:",
 
-    answerChoice: ["1. strings", "2. booleans", "3. alerts", "4. numbers"],
+    userChoice: ["1. strings", "2. booleans", "3. alerts", "4. numbers"],
     correctAnswer: 2,
   },
   {
     question: "The condition in an if else statement is enclosed within ____.",
-    answerChoice: [
+    userChoice: [
       "1. quotes",
       "2. curly brackets",
       "3. parentheses",
@@ -31,7 +31,7 @@ const questionArray = [
   },
   {
     question: "Arrays in JavaScript can be used to store ____.",
-    answerChoice: [
+    userChoice: [
       "1. numbers and strings",
       "2. other arrrays",
       "3. booleans",
@@ -42,7 +42,7 @@ const questionArray = [
   {
     question:
       "Strings values must be enclosed within ____ when being assigned to variables.",
-    answerChoice: [
+    userChoice: [
       "1. commas",
       "2. curly brackets",
       "3. quotes",
@@ -52,7 +52,7 @@ const questionArray = [
   },
   {
     question: "A very useful tool to debug arrays is",
-    answerChoice: [
+    userChoice: [
       "1. JavaScript",
       "2. terminal/bash",
       "3. for loops",
@@ -62,12 +62,16 @@ const questionArray = [
   },
 ];
 
+console.log(questionArray.question);
+console.log(questionArray.userChoice);
+console.log(questionArray.correctAnswer);
+
 function setQuizQuestions() {
   questionHolder.textContent = questionArray[i].question;
-  answer1.textContent = questionArray[i].answerChoice[0];
-  answer2.textContent = questionArray[i].answerChoice[1];
-  answer3.textContent = questionArray[i].answerChoice[2];
-  answer4.textContent = questionArray[i].answerChoice[3];
+  answer1.textContent = questionArray[i].userChoice[0];
+  answer2.textContent = questionArray[i].userChoice[1];
+  answer3.textContent = questionArray[i].userChoice[2];
+  answer4.textContent = questionArray[i].userChoice[3];
 }
 
 setQuizQuestions();
@@ -84,6 +88,10 @@ function countdown() {
   }, 1000);
 }
 
-function checkAnswer() {}
+function checkAnswer() {
+  var currentQuestion = questionArray.question;
+  var userAnswer = questionArray.userChoice;
+  var correct = questionArray.correctAnswer;
+}
 
 answer1.addEventListener("click", function () {});
