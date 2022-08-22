@@ -4,13 +4,41 @@ var answer3 = document.querySelector("#ans_3");
 var answer4 = document.querySelector("#ans_4");
 var timerEl = document.querySelector("#timer");
 var startQuizz = document.querySelector("#start");
-var highscore = document.querySelector("#highscore");
+var points = document.querySelector("#points");
 var questionHolder = document.querySelector("#questions");
-var answerHolder = document.querySelector("answers");
+var answerHolder = document.querySelector("#answers");
+var welcome = document.querySelector("#welcome");
 var highscore = [];
-var timerCount = 10;
+var timerCount = 71;
+var score = 0;
 
-let i = 0;
+let i = 1;
+
+questionHolder.style.display = "none";
+answerHolder.style.display = "none";
+timerEl.style.display = "none";
+points.style.display = "none";
+
+startQuizz.addEventListener("click", function () {
+  questionHolder.style.display = "block";
+  answerHolder.style.display = "block";
+  timerEl.style.display = "block";
+  points.style.display = "block";
+  welcome.style.display = "none";
+  startQuizz.style.display = "none";
+});
+
+function countdown() {
+  var timer = setInterval(function () {
+    timerCount--;
+    timerEl.textContent = "time_remaining: " + timerCount;
+    if (timerCount === 0) {
+      clearInterval(timer);
+    }
+  }, 1000);
+}
+
+startQuizz.addEventListener("click", countdown);
 
 const questionArray = [
   {
@@ -73,25 +101,21 @@ function setQuizQuestions() {
   answer3.textContent = questionArray[i].userChoice[2];
   answer4.textContent = questionArray[i].userChoice[3];
 }
-
 setQuizQuestions();
 
-startQuizz.addEventListener("click", countdown);
+answer1.addEventListener("click", function () {
+  if (questionArray[i].userChoice == questionArray[i.correctAnswer])
+    console.log("correctAnswer");
+});
 
-function countdown() {
-  var timer = setInterval(function () {
-    timerCount--;
-    timerEl.innerHTML = "time_remaining: " + timerCount;
-    if (timerCount === 0) {
-      clearInterval(timer);
-    }
-  }, 1000);
-}
+answer2.addEventListener("click", function () {
+  console.log(questionArray[i].correctAnswer);
+});
 
-function checkAnswer() {
-  var currentQuestion = questionArray.question;
-  var userAnswer = questionArray.userChoice;
-  var correct = questionArray.correctAnswer;
-}
+answer3.addEventListener("click", function () {
+  console.log(questionArray[i].correctAnswer);
+});
 
-answer1.addEventListener("click", function () {});
+answer4.addEventListener("click", function () {
+  console.log(questionArray[i].correctAnswer);
+});
