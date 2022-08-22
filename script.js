@@ -8,16 +8,19 @@ var points = document.querySelector("#points");
 var questionHolder = document.querySelector("#questions");
 var answerHolder = document.querySelector("#answers");
 var welcome = document.querySelector("#welcome");
-var highscore = [];
+var isCorrect = document.querySelector("#correctAnswer");
+// var submit = document.querySelector("#submit");
 var timerCount = 71;
+var timer;
 var score = 0;
 
-let i = 1;
+let i = 0;
 
 questionHolder.style.display = "none";
 answerHolder.style.display = "none";
 timerEl.style.display = "none";
 points.style.display = "none";
+// submit.style.display = "none";
 
 startQuizz.addEventListener("click", function () {
   questionHolder.style.display = "block";
@@ -29,7 +32,7 @@ startQuizz.addEventListener("click", function () {
 });
 
 function countdown() {
-  var timer = setInterval(function () {
+  timer = setInterval(function () {
     timerCount--;
     timerEl.textContent = "time_remaining: " + timerCount;
     if (timerCount === 0) {
@@ -88,11 +91,15 @@ const questionArray = [
     ],
     correctAnswer: 3,
   },
+  {
+    question: "",
+    userChoice: ["1. ", "2. ", "3.  ", "4. "],
+    correctAnswer: 0,
+  },
 ];
 
-console.log(questionArray.question);
-console.log(questionArray.userChoice);
-console.log(questionArray.correctAnswer);
+console.log("question array", questionArray[i].question);
+console.log("length", questionArray.length);
 
 function setQuizQuestions() {
   questionHolder.textContent = questionArray[i].question;
@@ -104,18 +111,66 @@ function setQuizQuestions() {
 setQuizQuestions();
 
 answer1.addEventListener("click", function () {
-  if (questionArray[i].userChoice == questionArray[i.correctAnswer])
-    console.log("correctAnswer");
+  var index = this.getAttribute("data-index");
+  index = parseInt(index);
+  console.log("index", index, "question array", questionArray[i].correctAnswer);
+  i++;
+  if (index === questionArray[i].correctAnswer) {
+    isCorrect.textContent = "Correct";
+  } else {
+    isCorrect.textContent = "Wrong";
+    timerCount -= 10;
+  }
+
+  setQuizQuestions();
 });
 
 answer2.addEventListener("click", function () {
-  console.log(questionArray[i].correctAnswer);
+  var index = this.getAttribute("data-index");
+  index = parseInt(index);
+  console.log("index", index, "question array", questionArray[i].correctAnswer);
+  i++;
+  if (index === questionArray[i].correctAnswer) {
+    isCorrect.textContent = "Correct";
+  } else {
+    isCorrect.textContent = "Wrong";
+    timerCount -= 10;
+  }
+
+  setQuizQuestions();
 });
 
 answer3.addEventListener("click", function () {
-  console.log(questionArray[i].correctAnswer);
+  var index = this.getAttribute("data-index");
+  index = parseInt(index);
+  console.log("index", index, "question array", questionArray[i].correctAnswer);
+  i++;
+  if (index === questionArray[i].correctAnswer) {
+    isCorrect.textContent = "Correct";
+  } else {
+    isCorrect.textContent = "Wrong";
+    timerCount -= 10;
+  }
+  setQuizQuestions();
 });
 
 answer4.addEventListener("click", function () {
-  console.log(questionArray[i].correctAnswer);
+  var index = this.getAttribute("data-index");
+  index = parseInt(index);
+  console.log("index", index, "question array", questionArray[i].correctAnswer);
+  i++;
+  if (index === questionArray[i].correctAnswer) {
+    isCorrect.textContent = "Correct";
+  } else {
+    isCorrect.textContent = "Wrong";
+    timerCount -= 10;
+  }
+
+  setQuizQuestions();
 });
+
+// if the i is index is greater than the questionArray then stop the clock,
+//hide the question elements and how the highscore elements
+if (i == 5) {
+  clearInterval(timer);
+}
