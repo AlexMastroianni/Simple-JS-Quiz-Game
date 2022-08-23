@@ -16,10 +16,6 @@ var score = 0;
 
 let i = 0;
 
-if ([i] === 5) {
-  console.log("end of quizz");
-}
-
 questionHolder.style.display = "none";
 answerHolder.style.display = "none";
 timerEl.style.display = "none";
@@ -186,6 +182,6 @@ answer4.addEventListener("click", function () {
 
 // if the i is index is greater than the questionArray then stop the clock,
 //hide the question elements and how the highscore elements
-if ([i] === 5) {
+if ([i] >= questionArray.length - 1) {
   console.log("end of quizz");
 }
