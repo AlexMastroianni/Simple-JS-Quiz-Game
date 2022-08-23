@@ -16,6 +16,10 @@ var score = 0;
 
 let i = 0;
 
+if ([i] === 5) {
+  console.log("end of quizz");
+}
+
 questionHolder.style.display = "none";
 answerHolder.style.display = "none";
 timerEl.style.display = "none";
@@ -114,14 +118,16 @@ answer1.addEventListener("click", function () {
   var index = this.getAttribute("data-index");
   index = parseInt(index);
   console.log("index", index, "question array", questionArray[i].correctAnswer);
-  i++;
+  // i++;
   if (index === questionArray[i].correctAnswer) {
     isCorrect.textContent = "Correct";
+    console.log("Correct");
   } else {
     isCorrect.textContent = "Wrong";
+    console.log("Wrong");
     timerCount -= 10;
   }
-
+  i++;
   setQuizQuestions();
 });
 
@@ -132,11 +138,13 @@ answer2.addEventListener("click", function () {
   i++;
   if (index === questionArray[i].correctAnswer) {
     isCorrect.textContent = "Correct";
+    console.log("Correct");
   } else {
     isCorrect.textContent = "Wrong";
+    console.log("Wrong");
     timerCount -= 10;
   }
-
+  i++;
   setQuizQuestions();
 });
 
@@ -144,13 +152,17 @@ answer3.addEventListener("click", function () {
   var index = this.getAttribute("data-index");
   index = parseInt(index);
   console.log("index", index, "question array", questionArray[i].correctAnswer);
-  i++;
+  // i++;
   if (index === questionArray[i].correctAnswer) {
     isCorrect.textContent = "Correct";
+    console.log("Correct");
   } else {
     isCorrect.textContent = "Wrong";
+    console.log("Wrong");
+
     timerCount -= 10;
   }
+  i++;
   setQuizQuestions();
 });
 
@@ -158,19 +170,22 @@ answer4.addEventListener("click", function () {
   var index = this.getAttribute("data-index");
   index = parseInt(index);
   console.log("index", index, "question array", questionArray[i].correctAnswer);
-  i++;
+  // i++;
   if (index === questionArray[i].correctAnswer) {
     isCorrect.textContent = "Correct";
+    console.log("Correct");
   } else {
     isCorrect.textContent = "Wrong";
+    console.log("Wrong");
+
     timerCount -= 10;
   }
-
+  i++;
   setQuizQuestions();
 });
 
 // if the i is index is greater than the questionArray then stop the clock,
 //hide the question elements and how the highscore elements
-if (i == 5) {
-  clearInterval(timer);
+if ([i] === 5) {
+  console.log("end of quizz");
 }
