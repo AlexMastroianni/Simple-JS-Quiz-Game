@@ -97,6 +97,7 @@ function setQuizQuestions() {
   if (i >= questionArray.length) {
     questionHolder.style.display = "none";
     answerHolder.style.display = "none";
+    userScore.style.display = "block";
     clearInterval(timer);
   } else {
     questionHolder.textContent = questionArray[i].question;
