@@ -14,6 +14,7 @@ var userNameEl = document.querySelector("#userNameEl");
 var userInputName = document.querySelector("#userInputName");
 var submit = document.querySelector("#submitBtn");
 var userScoreInput = localStorage.getItem("highscore");
+var userResults = document.querySelector("#userResults");
 var timerCount = 71;
 var timer;
 var score = 0;
@@ -139,7 +140,11 @@ submit.addEventListener("click", saveScore);
 
 function saveScore() {
   var userInitals = userInputName.value;
-  var Score = timer.value;
+  var score = timerCount.value;
   localStorage.setItem("username", JSON.stringify(userInitals));
-  localStorage.setItem("score", timerCount);
+  localStorage.setItem("score", score);
 }
+
+//to do - add timer runout stopping conitdtion
+
+userResults.textContent = "hello";
