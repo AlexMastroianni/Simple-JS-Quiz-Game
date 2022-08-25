@@ -16,31 +16,18 @@ var submit = document.querySelector("#submitBtn");
 var userScoreInput = localStorage.getItem("highscore");
 let timerCount = 71;
 var timer;
-
+let scores = JSON.parse(localStorage.getItem("scores") ?? "[]");
+// current question index
 let i = 0;
 
-let scores = JSON.parse(localStorage.getItem("scores") ?? "[]");
-
-// let scores = JSON.parse(localStorage.getItem("scores") ?? "[]");
-
-//hiding quizz itmes
+//hiding quizz game element to show start screen
 questionHolder.style.display = "none";
 answerHolder.style.display = "none";
 timerEl.style.display = "none";
 points.style.display = "none";
 highscore.style.display = "none";
 
-//hides info page and shows quizz items
-startQuizz.addEventListener("click", function () {
-  questionHolder.style.display = "block";
-  answerHolder.style.display = "block";
-  timerEl.style.display = "block";
-  points.style.display = "block";
-  welcome.style.display = "none";
-  startQuizz.style.display = "none";
-});
-
-// Starts and stops countdown
+// starts and stops countdown
 function countdown() {
   timer = setInterval(function () {
     timerCount--;
@@ -51,8 +38,18 @@ function countdown() {
   }, 1000);
 }
 
-startQuizz.addEventListener("click", countdown);
+// starts the quizz, hiding all starting elements to reveal question/answers
+startQuizz.addEventListener("click", function () {
+  questionHolder.style.display = "block";
+  answerHolder.style.display = "block";
+  timerEl.style.display = "block";
+  points.style.display = "block";
+  welcome.style.display = "none";
+  startQuizz.style.display = "none";
+  countdown();
+});
 
+//question array storying Question, Users Answer, Correct Answer
 const questionArray = [
   {
     question: "Commonly used data types DO NOT include:",
@@ -103,8 +100,9 @@ const questionArray = [
   },
 ];
 
-// Quizz start function
+// starting and stopping condition. question selection refernce by [i] which get added to very question.
 function setQuizQuestions() {
+  //if the current question number is larger or = to the question array lenght stop quizz
   if (i >= questionArray.length) {
     questionHolder.style.display = "none";
     answerHolder.style.display = "none";
@@ -112,6 +110,7 @@ function setQuizQuestions() {
     isCorrect.style.display = "none";
     clearInterval(timer);
   } else {
+    //starting condition setting up the questionArray. question is controlled by
     questionHolder.textContent = questionArray[i].question;
     answer1.textContent = questionArray[i].userChoice[0];
     answer2.textContent = questionArray[i].userChoice[1];
@@ -121,7 +120,7 @@ function setQuizQuestions() {
 }
 setQuizQuestions();
 
-// Handler for user question answer
+// handler for user question answer/user answer checker. if userChoice = correctAnswer[i] then true.
 function handleAnswerClick() {
   var index = this.getAttribute("data-index");
   index = parseInt(index);
@@ -138,13 +137,14 @@ function handleAnswerClick() {
   i++;
   setQuizQuestions();
 }
-//Add event delication
+
+// button handler for each user choice. if quesiton have any more than 5 answers update to event deleagtion on parent.
 answer1.addEventListener("click", handleAnswerClick);
 answer2.addEventListener("click", handleAnswerClick);
 answer3.addEventListener("click", handleAnswerClick);
 answer4.addEventListener("click", handleAnswerClick);
 
-// savining user data to local storage
+// saving user data to local storage - takes the user input from html and take time remaining from timeCount and concats and pushs to local storage. userInitals = username, score = time remaining
 function saveScore(event) {
   event.preventDefault();
   var userInitals = userInputName.value;
