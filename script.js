@@ -9,7 +9,11 @@ var questionHolder = document.querySelector("#questions");
 var answerHolder = document.querySelector("#answers");
 var welcome = document.querySelector("#welcome");
 var isCorrect = document.querySelector("#correctAnswer");
-var userScore = document.querySelector("#userScore");
+var highscore = document.querySelector("#highscore");
+var userNameEl = document.querySelector("#userNameEl");
+var userInputName = document.querySelector("#userInputName");
+var submit = document.querySelector("#submitBtn");
+var userScoreInput = localStorage.getItem("highscore");
 var timerCount = 71;
 var timer;
 var score = 0;
@@ -20,7 +24,7 @@ questionHolder.style.display = "none";
 answerHolder.style.display = "none";
 timerEl.style.display = "none";
 points.style.display = "none";
-userScore.style.display = "none";
+highscore.style.display = "none";
 
 startQuizz.addEventListener("click", function () {
   questionHolder.style.display = "block";
@@ -97,7 +101,7 @@ function setQuizQuestions() {
   if (i >= questionArray.length) {
     questionHolder.style.display = "none";
     answerHolder.style.display = "none";
-    userScore.style.display = "block";
+    highscore.style.display = "block";
     clearInterval(timer);
   } else {
     questionHolder.textContent = questionArray[i].question;
@@ -131,15 +135,11 @@ answer2.addEventListener("click", handleAnswerClick);
 answer3.addEventListener("click", handleAnswerClick);
 answer4.addEventListener("click", handleAnswerClick);
 
-// questionHolder.style.display = "none";
-// answerHolder.style.display = "none";
-// timerEl.style.display = "none";
-// points.style.display = "none";
-// userScore.style.display = "none";
+submit.addEventListener("click", saveScore);
 
-// questionHolder.style.display = "block";
-// answerHolder.style.display = "block";
-// timerEl.style.display = "block";
-// points.style.display = "block";
-// welcome.style.display = "none";
-// startQuizz.style.display = "none";
+function saveScore() {
+  var userInitals = userInputName.value;
+  var Score = timer.value;
+  localStorage.setItem("username", JSON.stringify(userInitals));
+  localStorage.setItem("score", timerCount);
+}
