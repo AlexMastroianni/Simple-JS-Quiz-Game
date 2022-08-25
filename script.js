@@ -130,3 +130,16 @@ answer1.addEventListener("click", handleAnswerClick);
 answer2.addEventListener("click", handleAnswerClick);
 answer3.addEventListener("click", handleAnswerClick);
 answer4.addEventListener("click", handleAnswerClick);
+
+// questionHolder.style.display = "none";
+// answerHolder.style.display = "none";
+// timerEl.style.display = "none";
+// points.style.display = "none";
+// userScore.style.display = "none";
+
+// questionHolder.style.display = "block";
+// answerHolder.style.display = "block";
+// timerEl.style.display = "block";
+// points.style.display = "block";
+// welcome.style.display = "none";
+// startQuizz.style.display = "none";
