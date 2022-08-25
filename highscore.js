@@ -1,13 +1,21 @@
 var userResults = document.querySelector("#userResults");
 var nameEl = document.querySelector("#nameEl");
 var scoreEL = document.querySelector("#scoreEl");
+var scorelist = [];
 
-var username = JSON.parse(localStorage.getItem("username"));
-var userscore = localStorage.getItem("score");
-console.log(username);
+let userscore = JSON.parse(window.localStorage.getItem("scores") ?? "[]");
+
 console.log(userscore);
 
-userResults.textContent = ("User Name" + username, "Score " + userscore);
+// for (var i = 0; i < userscore.length; i++) {
+//   var list = scorelist[i];
 
-nameEl.textContent = username;
-scoreEL.textContent = userscore;
+//   var li = document.createElement("li");
+//   li.textContent = list;
+//   li.setAttribute("data-index", i);
+
+//   li.appendChild;
+//   scoreEL.appendChild(li);
+// }
+
+scoreEL.textContent = JSON.stringify(userscore);

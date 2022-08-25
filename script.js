@@ -14,19 +14,23 @@ var userNameEl = document.querySelector("#userNameEl");
 var userInputName = document.querySelector("#userInputName");
 var submit = document.querySelector("#submitBtn");
 var userScoreInput = localStorage.getItem("highscore");
-var userResults = document.querySelector("#userResults");
-var timerCount = 71;
+let timerCount = 71;
 var timer;
-var score = 0;
 
 let i = 0;
 
+let scores = JSON.parse(localStorage.getItem("scores") ?? "[]");
+
+// let scores = JSON.parse(localStorage.getItem("scores") ?? "[]");
+
+//hiding quizz itmes
 questionHolder.style.display = "none";
 answerHolder.style.display = "none";
 timerEl.style.display = "none";
 points.style.display = "none";
 highscore.style.display = "none";
 
+//hides info page and shows quizz items
 startQuizz.addEventListener("click", function () {
   questionHolder.style.display = "block";
   answerHolder.style.display = "block";
@@ -36,6 +40,7 @@ startQuizz.addEventListener("click", function () {
   startQuizz.style.display = "none";
 });
 
+// Starts and stops countdown
 function countdown() {
   timer = setInterval(function () {
     timerCount--;
@@ -98,11 +103,13 @@ const questionArray = [
   },
 ];
 
+// Quizz start function
 function setQuizQuestions() {
   if (i >= questionArray.length) {
     questionHolder.style.display = "none";
     answerHolder.style.display = "none";
     highscore.style.display = "block";
+    isCorrect.style.display = "none";
     clearInterval(timer);
   } else {
     questionHolder.textContent = questionArray[i].question;
@@ -114,6 +121,7 @@ function setQuizQuestions() {
 }
 setQuizQuestions();
 
+// Handler for user question answer
 function handleAnswerClick() {
   var index = this.getAttribute("data-index");
   index = parseInt(index);
@@ -136,15 +144,16 @@ answer2.addEventListener("click", handleAnswerClick);
 answer3.addEventListener("click", handleAnswerClick);
 answer4.addEventListener("click", handleAnswerClick);
 
-submit.addEventListener("click", saveScore);
-
-function saveScore() {
+// savining user data to local storage
+function saveScore(event) {
+  event.preventDefault();
   var userInitals = userInputName.value;
-  var score = timerCount.value;
-  localStorage.setItem("username", JSON.stringify(userInitals));
-  localStorage.setItem("score", score);
+  let score = timerCount;
+  console.log(timerCount);
+  scores.push({ userInitals, score });
+  localStorage.setItem("scores", JSON.stringify(scores));
+  window.location.href = "pages/scores.html";
 }
 
-//to do - add timer runout stopping conitdtion
-
-userResults.textContent = "hello";
+//submit saves user data
+submit.addEventListener("click", saveScore);
