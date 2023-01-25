@@ -1,4 +1,4 @@
-### week-4-challenge - Web API coding Quizz!
+### coding Quizz!
 
 
 # This weeks challenge
